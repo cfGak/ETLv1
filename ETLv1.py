@@ -4,17 +4,7 @@ import pandas as pd
 import time
 import pyodbc
 from sqlalchemy import create_engine
-'''
-try:
-    connection = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=PC-NICO;DATABASE=TemporalDatabase;UID=sa;PWD=sa')
-    print("Conexion exitosa")
-    cursor = connection.cursor()
-    cursor.execute("SELECT @@version;")
-    row=cursor.fetchone()
-    print(row)
-except Exception as ex:
-    print(ex)
-'''
+
 server = 'PC-Nico'
 database = 'TestDatabase'
 username = 'sa'
@@ -204,10 +194,7 @@ def crear_inventaro_Df(directorio_base):
             try:
 
                 # Leer el archivo CSV con Pandas
-                df = pd.read_excel(file_path)
-                #Check de las columnas
-                #Borrado de erros en caso de que alguna columna numerica en factura sea 0
-                
+                df = pd.read_excel(file_path)                
                 # Verificar si hay algún valor igual a 0 en las columnas específicas
                 if df.empty:
 
